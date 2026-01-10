@@ -294,8 +294,13 @@ In addition to NVIDIA, we've successfully built key ROCm components from source 
 |-----------|---------|--------|-------|
 | **ROCT-Thunk-Interface** | 5.7.1 | ✅ Built & Installed | HSA kernel interface |
 | **LLVM/Clang** | 17.0.0 | ✅ Built & Installed | AMDGPU + PowerPC targets |
-| **ROCR-Runtime** | 5.7.1 | 🔄 In Progress | HSA runtime library |
+| **ROCR-Runtime** | 5.7.1 | ✅ Built & Installed | HSA runtime library (libhsa-runtime64.so) |
 | **ROCm Drivers** | - | Pending | amdgpu kernel module |
+
+**ROCm Installation Path**: `/opt/rocm/`
+- Libraries: `/opt/rocm/lib/` (libhsa-runtime64.so, libhsakmt.a)
+- Headers: `/opt/rocm/include/hsa/`
+- Clang: `/opt/rocm/llvm/bin/clang`
 
 ## Prerequisites Built from Source
 
