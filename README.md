@@ -280,105 +280,13 @@ Tesla K80, M40, V100 require auxiliary power connectors. Consumer ATX PSUs may n
 - **AI Assistance**: Claude AI (Anthropic)
 - **RTX 5070 Testing**: Community contributor
 
----
+## See Also
 
-# ROCm for AMD GPUs on POWER8
-
-**Also First: ROCm Stack Built from Source for POWER8/PPC64LE!**
-
-In addition to NVIDIA, we've successfully built key ROCm components from source for AMD GPUs on POWER8, including Clang 17 with AMDGPU backend.
-
-## ROCm Build Status
-
-| Component | Version | Status | Notes |
-|-----------|---------|--------|-------|
-| **ROCT-Thunk-Interface** | 5.7.1 | ✅ Built & Installed | HSA kernel interface |
-| **LLVM/Clang** | 17.0.0 | ✅ Built & Installed | AMDGPU + PowerPC targets |
-| **ROCR-Runtime** | 5.7.1 | ✅ Built & Installed | HSA runtime library (libhsa-runtime64.so) |
-| **ROCm Drivers** | - | Pending | amdgpu kernel module |
-
-**ROCm Installation Path**: `/opt/rocm/`
-- Libraries: `/opt/rocm/lib/` (libhsa-runtime64.so, libhsakmt.a)
-- Headers: `/opt/rocm/include/hsa/`
-- Clang: `/opt/rocm/llvm/bin/clang`
-
-## Prerequisites Built from Source
-
-Ubuntu 20.04 on POWER8 has broken packages (wrong glibc). All prerequisites built from source:
-
-| Tool | Version | Why Needed |
-|------|---------|------------|
-| cmake | 3.25.3 | System cmake broken (glibc 2.32-2.34 vs 2.31) |
-| numactl | 2.0.16 | ROCT dependency |
-| pkg-config | 0.29.2 | Build system |
-| libdrm | 2.4.100 | DRM userspace library (AMD-only, no nouveau) |
-
-## LLVM/Clang Build Configuration
-
-```bash
-cmake ../llvm \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/opt/rocm/llvm \
-    -DLLVM_ENABLE_PROJECTS="clang;lld" \
-    -DLLVM_TARGETS_TO_BUILD="AMDGPU;PowerPC" \
-    -DLLVM_ENABLE_ASSERTIONS=OFF \
-    -DLLVM_PARALLEL_LINK_JOBS=8
-
-# Build with 64 threads (POWER8 has 128 threads via SMT8)
-make -j64
-sudo make install
-```
-
-## Verified Clang Output
-
-```
-$ /opt/rocm/llvm/bin/clang --version
-clang version 17.0.0
-Target: powerpc64le-unknown-linux-gnu
-Thread model: posix
-```
-
-## Supported AMD GPUs (Target)
-
-| Architecture | GPUs | ROCm Support |
-|-------------|------|--------------|
-| **RDNA 2/3** | RX 6800, 7900 XTX | Full |
-| **RDNA 1** | RX 5700 | Full |
-| **Polaris (GCN4)** | RX 580, 480 | Legacy (5.7.x) |
-| **Vega** | Radeon VII, MI50 | Full |
-
-## AMD GPU Connection
-
-Same OCuLink method as NVIDIA:
-- Supermicro AOC-SLG3-2E4T host card
-- Minisforum DEG1 or similar GPU dock
-- ATX power supply
-- SFF-8611 OCuLink cable
-
-## Build Scripts
-
-All build commands available in `/tmp/rocm-build/` on the POWER8 system:
-- `cmake-3.25.3/` - CMake built from source
-- `numactl-2.0.16/` - NUMA libraries
-- `libdrm-2.4.100/` - DRM userspace
-- `ROCT-Thunk-Interface-rocm-5.7.1/` - HSA thunk
-- `llvm-project-rocm-5.7.1/` - LLVM/Clang source
-
-## Why ROCm on POWER8?
-
-1. **True Open Source**: AMD's GPU compute stack is fully open
-2. **Legacy GPU Support**: Polaris/Vega cards are affordable
-3. **HIP Portability**: Write once, run on AMD or NVIDIA
-4. **576GB RAM**: Load massive models without GPU VRAM limits
-5. **Alternative Ecosystem**: Not locked to NVIDIA CUDA
-
----
+- **AMD ROCm for POWER8**: [amd-rocm-power8-patches](https://github.com/Scottcjn/amd-rocm-power8-patches) - ROCm stack for AMD GPUs on POWER8
 
 ## License
 
 Patches are provided under the same license as the NVIDIA open-source driver (MIT/Apache 2.0 dual license).
-
-ROCm components retain their original AMD licenses (primarily MIT).
 
 ## Contact
 
