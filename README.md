@@ -293,3 +293,10 @@ Patches are provided under the same license as the NVIDIA open-source driver (MI
 For questions or contributions:
 - Open an issue on this repository
 - Email: scott@elyanlabs.ai
+
+
+## 中文简介
+
+Elyan Labs POWER8/PowerPC 项目 - 为 IBM POWER 系统和复古 Mac 提供现代 AI 支持。
+
+Contributed by eelaine-wzw
