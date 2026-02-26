@@ -1,5 +1,6 @@
 # Modern NVIDIA Driver for IBM POWER8 via OCuLink
 
+[![BCOS Certified](https://img.shields.io/badge/BCOS-Certified-brightgreen?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAxTDMgNXY2YzAgNS41NSAzLjg0IDEwLjc0IDkgMTIgNS4xNi0xLjI2IDktNi40NSA5LTEyVjVsLTktNHptLTIgMTZsLTQtNCA1LjQxLTUuNDEgMS40MSAxLjQxTDEwIDE0bDYtNiAxLjQxIDEuNDFMMTAgMTd6Ii8+PC9zdmc+)](BCOS.md)
 **World's First NVIDIA Open-Source Kernel Driver for POWER8/PPC64LE!**
 
 These patches enable compilation of the NVIDIA open-source GPU kernel modules on IBM POWER8 systems (PPC64LE architecture), allowing modern NVIDIA GPUs including the latest RTX 5070 (Blackwell) to work via OCuLink or standard PCIe.
