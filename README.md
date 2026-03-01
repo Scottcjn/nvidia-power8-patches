@@ -1,5 +1,47 @@
 # Modern NVIDIA Driver for IBM POWER8 via OCuLink
 
+[![License](https://img.shields.io/github/license/Scottcjn/nvidia-power8-patches)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Scottcjn/nvidia-power8-patches)](https://github.com/Scottcjn/nvidia-power8-patches/stargazers)
+[![Issues](https://img.shields.io/github/issues/Scottcjn/nvidia-power8-patches)](https://github.com/Scottcjn/nvidia-power8-patches/issues)
+
+## Installation
+
+### Prerequisites
+
+- Power8/Power9/Power10 system
+- NVIDIA GPU (compatible models)
+- CUDA toolkit
+- Build tools (gcc, make, cmake)
+
+### Quick Install
+
+```bash
+# Clone the repository
+git clone https://github.com/Scottcjn/nvidia-power8-patches.git
+cd nvidia-power8-patches
+
+# Apply patches
+./apply-patches.sh
+
+# Or manually
+cd /path/to/nvidia-driver-source
+patch -p1 < /path/to/nvidia-power8-patches/nvidia-power8.patch
+
+# Build and install
+make
+sudo make install
+```
+
+### Verify Installation
+
+```bash
+# Check NVIDIA driver
+nvidia-smi
+
+# Verify CUDA
+nvcc --version
+```
+
 [![BCOS Certified](https://img.shields.io/badge/BCOS-Certified-brightgreen?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAxTDMgNXY2YzAgNS41NSAzLjg0IDEwLjc0IDkgMTIgNS4xNi0xLjI2IDktNi40NSA5LTEyVjVsLTktNHptLTIgMTZsLTQtNCA1LjQxLTUuNDEgMS40MSAxLjQxTDEwIDE0bDYtNiAxLjQxIDEuNDFMMTAgMTd6Ii8+PC9zdmc+)](BCOS.md)
 **World's First NVIDIA Open-Source Kernel Driver for POWER8/PPC64LE!**
 
