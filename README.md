@@ -270,6 +270,8 @@ apt-cache search cuda | grep -i ppc
 
 ## Confirmed Working Configurations
 
+For a conservative table of documented POWER8/GPU combinations, see [POWER8 NVIDIA Compatibility Matrix](docs/COMPATIBILITY_MATRIX.md).
+
 ### RTX 5070 (Blackwell) Inference
 - **Host**: x86_64 Linux
 - **Model**: Borris's LLM model
